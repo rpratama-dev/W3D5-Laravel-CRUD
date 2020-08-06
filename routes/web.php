@@ -14,11 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index', ['page' => 'Index', 'route' => 'Home']);
+    return view('index', ['page' => 'Index']);
 });
 
 Route::get('/data-tables', function () {
-    return view('datatable', ['page' => 'Data Table', 'route' => 'Data']);
+    return view('datatable', ['page' => 'Data Table']);
 });
 
 Route::get('/yield', function () {
