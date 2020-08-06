@@ -15,17 +15,20 @@
   <link rel="stylesheet" href="{{ asset('/adminlte/dist/css/adminlte.min.css')}}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  @stack('style')
+
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
 
   <!-- Navbar -->
-  @include('master/header')
+  @include('layouts/partials/header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('master/sidebar')
+  @include('layouts/partials/sidebar')
   <!-- /.main-side -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -35,12 +38,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Blank Page</h1>
+            <h1>{{ $page }}</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><a href="#">{{ $route }}</a></li>
+              <li class="breadcrumb-item active">{{ $page }}</li>
             </ol>
           </div>
         </div>
@@ -50,38 +53,20 @@
     <!-- Main content -->
     <section class="content">
 
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
+      <!-- Yield Content -->
 
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
-        </div>
-        <div class="card-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
+      @yield('content')
+      
+      <!-- /.conten -->
 
     </section>
     <!-- /.content -->
-    @yield('content')
     
   </div>
   <!-- /.content-wrapper -->
 
   <!-- footer -->
-  @include('master/footer')
+  @include('layouts.partials.footer')
   <!-- /footer -->
 
   <!-- Control Sidebar -->
@@ -100,5 +85,9 @@
 <script src="{{ asset('/adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('/adminlte/dist/js/demo.js') }}"></script>
+
+<!-- receive push script from other page -->
+@stack('scripts')
+
 </body>
 </html>

@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('master/master');
+    return view('index', ['page' => 'Index', 'route' => 'Home']);
+});
+
+Route::get('/data-tables', function () {
+    return view('datatable', ['page' => 'Data Table', 'route' => 'Data']);
+});
+
+Route::get('/yield', function () {
+    return view('yield.card');
 });
