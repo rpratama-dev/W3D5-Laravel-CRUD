@@ -17,6 +17,8 @@ class CreateLikeDislikeJawabanTable extends Migration
             $table->integer('jawaban_id');
             $table->integer('profil_id');
             $table->integer('point');
+            $table->foreign('jawaban_id')->references('id')->on('jawaban');
+            $table->foreign('profil_id')->references('id')->on('profil');
         });
     }
 

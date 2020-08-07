@@ -20,6 +20,8 @@ class CreatePertanyaanTable extends Migration
             $table->timestamps();
             $table->integer('jawaban_tepat_id');
             $table->integer('profil_id'); 
+            $table->foreign('jawaban_tepat_id')->references('id')->on('jawaban');
+            $table->foreign('profil_id')->references('id')->on('profil');
         });
     }
 
