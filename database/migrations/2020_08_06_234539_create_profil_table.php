@@ -29,6 +29,8 @@ class CreateProfilTable extends Migration
      */
     public function down()
     {
+        // drop table 
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('profil');
     }
 }

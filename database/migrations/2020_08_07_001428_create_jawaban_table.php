@@ -17,8 +17,8 @@ class CreateJawabanTable extends Migration
             $table->increments('id');
             $table->char('isi', 255);
             $table->timestamps();
-            $table->integer('pertanyaan_id');
-            $table->integer('profil_id');
+            $table->integer('pertanyaan_id')->unsigned();
+            $table->integer('profil_id')->unsigned();
             $table->foreign('pertanyaan_id')->references('id')->on('pertanyaan');
             $table->foreign('profil_id')->references('id')->on('profil');
         });
@@ -31,6 +31,8 @@ class CreateJawabanTable extends Migration
      */
     public function down()
     {
+        // drop table 
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('jawaban');
     }
 }

@@ -17,8 +17,8 @@ class CreateKomentarJawabanTable extends Migration
             $table->increments('id');
             $table->char('isi', 255);
             $table->timestamps();
-            $table->integer('jawaban_id');
-            $table->integer('profil_id'); 
+            $table->integer('jawaban_id')->unsigned();
+            $table->integer('profil_id')->unsigned(); 
             $table->foreign('jawaban_id')->references('id')->on('jawaban');
             $table->foreign('profil_id')->references('id')->on('profil');
         });
@@ -31,6 +31,8 @@ class CreateKomentarJawabanTable extends Migration
      */
     public function down()
     {
+        // drop table 
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('komentar_jawaban');
     }
 }
