@@ -14,6 +14,7 @@ class CreateLikeDislikeJawabanTable extends Migration
     public function up()
     {
         Schema::create('like_dislike_jawaban', function (Blueprint $table) { 
+            $table->increments('id');
             $table->integer('jawaban_id')->unsigned();
             $table->integer('profil_id')->unsigned();
             $table->integer('point');
