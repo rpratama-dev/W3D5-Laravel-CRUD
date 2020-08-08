@@ -18,10 +18,9 @@ class CreatePertanyaanTable extends Migration
             $table->char('judul', 45); 
             $table->char('isi', 255); 
             $table->timestamps();
-            $table->integer('jawaban_tepat_id')->unsigned();
-            $table->integer('profil_id')->unsigned(); 
-            $table->foreign('profil_id')->references('id')->on('profil');
-            //$table->foreign('jawaban_tepat_id')->references('id')->on('jawaban');
+            $table->integer('jawaban_tepat_id')->nullable()->unsigned();
+            $table->integer('profil_id')->nullable()->unsigned(); 
+            $table->foreign('profil_id')->references('id')->constrained()->on('profil')->onDelete('cascade'); 
         });
     }
 

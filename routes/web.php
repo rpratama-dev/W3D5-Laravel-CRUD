@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index', ['page' => 'Index']);
+    return view('index', ['page' => 'Index']); 
 });
 
 Route::get('/data-tables', function () {
@@ -24,3 +24,44 @@ Route::get('/data-tables', function () {
 Route::get('/yield', function () {
     return view('yield.card');
 });
+
+/** menampilkan list data pertanyaan-pertanyaan (boleh menggunakan table html atau bootstrap card) */
+Route::get('/pertanyaan', 'PertanyaanController@index'); 
+
+//** Menampilkan daftar pertanyaan saya */
+Route::get('/pertanyaan/me', 'PertanyaanController@askedbyuser'); 
+
+/** menyimpan data baru ke tabel pertanyaan */
+Route::post('/pertanyaan', 'PertanyaanController@store'); 
+
+/** menampilkan form untuk membuat pertanyaan baru */
+Route::get('/pertanyaan/create', 'PertanyaanController@create'); 
+
+/** menampilkan detail pertanyaan dengan id tertentu */
+Route::get('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@show');
+
+/** menyimpan perubahan data pertanyaan (update) untuk id tertentu */
+Route::put('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@update'); 
+
+/** menghapus pertanyaand dengan id tertentu */
+Route::delete('/pertanyaan/{pertanyaan_id}', 'PertanyaanController@destroy');  
+
+/** menampilkan form untuk edit pertanyaan dengan id tertentu */
+Route::get('/pertanyaan/{pertanyaan_id}/edit', 'PertanyaanController@edit'); 
+
+/*
+Route::get('/pertanyaan', function () {
+    return view('form.question',['page' => 'Pertanyaan']);
+});
+
+Route::get('/pertanyaan', function () {
+    return view('form.question',['page' => 'Pertanyaan']);
+});
+
+Route::get('/pertanyaan/create', function () {
+    return view('form.question',['page' => 'Pertanyaan']);
+});
+*/
+
+?>
+

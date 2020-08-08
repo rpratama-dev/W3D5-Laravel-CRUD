@@ -13,10 +13,10 @@ class ForeignKey extends Migration
      */
     public function up()
     {
-        //
+        /** 
         Schema::table('pertanyaan', function (Blueprint $table) {   
-            $table->foreign('jawaban_tepat_id')->references('id')->on('jawaban');
-        });
+            $table->foreign('jawaban_tepat_id')->references('id')->constrained()->on('jawaban')->onDelete('cascade');
+        });*/
     }
 
     /**
