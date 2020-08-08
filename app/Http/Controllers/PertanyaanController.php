@@ -20,15 +20,8 @@ class PertanyaanController extends Controller
     public function index(){
         $data = DB::table('pertanyaan')->orderBy('id', 'desc')->get();
         //print_r ($datas);
-        return view('pertanyaan.index',['page' => 'Daftar Pertanyaan', 'datas' => $data, 'is_show'=>0]);
-    }
-
-    //** Menampilkan pertanyaan by user */
-    public function askedbyuser(){
-        $data = DB::table('pertanyaan')->where('profil_id', 1)->get();
-        //print_r ($data);
-        return view('pertanyaan.index',['page' => 'Daftar Pertanyaan Saya', 'datas' => $data]);
-    }
+        return view('pertanyaan.index',['page' => 'Daftar Pertanyaan', 'datas' => $data]);
+    } 
 
     /** menyimpan data baru ke tabel pertanyaan */
     public function store(Request $request){ 
@@ -50,7 +43,7 @@ class PertanyaanController extends Controller
     /** menampilkan form untuk membuat pertanyaan baru */
     public function create(){
         $data = (object) array('id'=>'', 'judul' => '', 'isi' => '' );
-        return view('pertanyaan.create',['page' => 'Pertanyaan', 'href'=>'/pertanyaan', 'data'=>$data]);
+        return view('pertanyaan.create',['page' => 'Buat Pertanyaan', 'href'=>'/pertanyaan', 'data'=>$data]);
         
         //return view('pertanyaan.create',['page' => 'Pertanyaan', 'href'=>'/pertanyaan']);
     }
@@ -86,7 +79,7 @@ class PertanyaanController extends Controller
     /** menampilkan form untuk edit pertanyaan dengan id tertentu */
     public function edit($id){ 
         $data = DB::table('pertanyaan')->find($id); 
-        return view('pertanyaan.create',['page' => 'Pertanyaan', 'href'=>'/pertanyaan/'.$id, 'data'=>$data]);
+        return view('pertanyaan.create',['page' => 'Edit Pertanyaan', 'href'=>'/pertanyaan/'.$id, 'data'=>$data]);
     }
 
 }
