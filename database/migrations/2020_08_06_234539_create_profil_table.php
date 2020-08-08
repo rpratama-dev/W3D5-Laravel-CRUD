@@ -23,7 +23,8 @@ class CreateProfilTable extends Migration
             $table->char('photo', 45);
             $table->timestamps();
         });
-
+        /* 
+        */
         $current_timestamp = Carbon::now()->toDateTimeString();
         $store = DB::table('profil')->insert([
             'id' => 1,
@@ -32,7 +33,7 @@ class CreateProfilTable extends Migration
             'photo' => "/img/photo.jpg",
             'created_at' => $current_timestamp,
             'updated_at' => $current_timestamp
-        ]);
+        ]); 
     }
 
     /**

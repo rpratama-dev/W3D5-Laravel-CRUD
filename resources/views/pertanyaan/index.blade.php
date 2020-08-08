@@ -28,7 +28,7 @@
               <a href="{{ '/pertanyaan/'.$data->id }}" class="product-title">{{ $data->judul }}
                 <span class="badge badge-info float-right">10 Jawaban</span></a>
               <span class="product-description">
-                {{ strip_tags($data->isi) }}
+                {!! $data->isi !!}
               </span>
             </div>
           </li>

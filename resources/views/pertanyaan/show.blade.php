@@ -10,14 +10,14 @@
     <!-- /.card-header -->
     <!-- form start -->  
     <div class="card-body">
-      {{ strip_tags($data->isi) }}
+      {!! $data->isi !!}
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
       <form class="float-left mr-3" method="post" action="/pertanyaan/{{ $data->id }}">  
-        @method('PUT')
+        @method('DELETE')
         @csrf  
-        <a type="submit" class="btn btn-danger btn-sm text-light">Delete</a>
+        <button type="submit" class="btn btn-block btn-danger btn-sm text-light">Delete</button>
       </form>  
       <form class="float-auto ml-3"> 
         <a href= "/pertanyaan/{{ $data->id }}/edit" class="btn btn-primary btn-sm text-light">Edit</a> 

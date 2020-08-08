@@ -15,7 +15,7 @@ class ForeignKey extends Migration
     {
         /** 
         Schema::table('pertanyaan', function (Blueprint $table) {   
-            $table->foreign('jawaban_tepat_id')->references('id')->constrained()->on('jawaban')->onDelete('cascade');
+            $table->foreign('jawaban_tepat_id')->references('id')->on('jawaban')->nullable();
         });*/
     }
 
