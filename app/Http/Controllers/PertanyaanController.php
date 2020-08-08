@@ -25,6 +25,9 @@ class PertanyaanController extends Controller
 
     /** menyimpan data baru ke tabel pertanyaan */
     public function store(Request $request){ 
+
+        $this->is_valid($request);
+        //*
         // insert data ke table pegawai
         $store = DB::table('pertanyaan')->insert([
             'judul' => $request->txtJudul,
@@ -37,6 +40,7 @@ class PertanyaanController extends Controller
         if ($store) { 
             return  $this->index();
         } 
+        //*/
     }
 
     /** menampilkan form untuk membuat pertanyaan baru */
@@ -55,6 +59,9 @@ class PertanyaanController extends Controller
 
     /** menyimpan perubahan data pertanyaan (update) untuk id tertentu */
     public function update(Request $request, $id){ 
+        $this->is_valid($request);
+        /*
+        */
         $affected = DB::table('pertanyaan')
               ->where('id', $id)
               ->update([
@@ -79,6 +86,13 @@ class PertanyaanController extends Controller
     public function edit($id){ 
         $data = DB::table('pertanyaan')->find($id); 
         return view('pertanyaan.create',['page' => 'Edit Pertanyaan', 'href'=>'/pertanyaan/'.$id, 'data'=>$data]);
+    }
+
+    public function is_valid($request){
+        $request->validate([
+           'txtJudul' => 'required|min:5|max:45',
+           'txtPertanyaan' => 'required' 
+        ]);  
     }
 
 }
