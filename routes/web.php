@@ -28,9 +28,6 @@ Route::get('/yield', function () {
 /** menampilkan list data pertanyaan-pertanyaan (boleh menggunakan table html atau bootstrap card) */
 Route::get('/pertanyaan', 'PertanyaanController@index'); 
 
-//** Menampilkan daftar pertanyaan saya */
-Route::get('/pertanyaan/me', 'PertanyaanController@askedbyuser'); 
-
 /** menyimpan data baru ke tabel pertanyaan */
 Route::post('/pertanyaan', 'PertanyaanController@store'); 
 

@@ -30,8 +30,7 @@ class PertanyaanController extends Controller
             'judul' => $request->txtJudul,
             'isi' => $request->txtPertanyaan,
             'created_at' => $this->current_timestamp,
-            'updated_at' => $this->current_timestamp,
-            'jawaban_tepat_id' => 1,
+            'updated_at' => $this->current_timestamp, 
             'profil_id' => 1
         ]);
 
